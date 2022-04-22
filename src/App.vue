@@ -12,6 +12,8 @@
         v-for="element in filteredFilm"
         :key="element.id"
         :title=element.original_title
+        :overview="element.overview"
+        :image="element.poster_path"
         />
       </div>
     </main>
