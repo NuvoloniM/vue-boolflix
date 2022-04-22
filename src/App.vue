@@ -47,7 +47,7 @@ export default {
     inputResultFunction(testo){
       console.log(testo);
       this.inputFilm = testo;
-      axios.get( `https://api.themoviedb.org/3/search/movie?api_key=ac7ccea2c466d848c3c9dc330aad7c80&query=${this.inputFilm}` )
+      axios.get( `https://api.themoviedb.org/3/search/movie?api_key=ac7ccea2c466d848c3c9dc330aad7c80&language=it-IT&query=${this.inputFilm}` )
         .then( (res) =>{
           console.log(res.data.results);
           this.filteredFilm = res.data.results;
