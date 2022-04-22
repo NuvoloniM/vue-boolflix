@@ -1,6 +1,6 @@
 <template>
-    <div class="card" style="width: 18rem;">
-        <img :src="`${imgSize}${image}`" class="card-img-top" alt="...">
+    <div class="card col-2 my-2 p-0">
+        <img :src="`${imgSize}${image}`" class="img-fluid" alt="...">
         <!-- <div class="card-body">
             <h5 class="card-title"> {{title}} </h5>
             <p class="card-text"> {{overview}} </p>
@@ -26,5 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .card{
+        border-color: rgb(200, 187, 187);
+    }
 </style>
