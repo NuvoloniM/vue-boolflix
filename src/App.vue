@@ -12,6 +12,7 @@
 <script>
 
 import "bootstrap";
+import axios from 'axios';
 import LogoComp from "./components/header/LogoComp.vue";
 import InputComp from "./components/header/InputComp.vue";
 
@@ -20,17 +21,25 @@ export default {
   data() {
     return{
       inputFilm: '',
+      filteredFilm: [],
     }
   },
   components: {
     LogoComp,
     InputComp,
   },
+  created() {
+  },
   methods: {
     inputResultFunction(testo){
       console.log(testo);
       this.inputFilm = testo;
-      console.log(this.inputFilm);
+      axios.get( `https://api.themoviedb.org/3/search/movie?api_key=ac7ccea2c466d848c3c9dc330aad7c80&query=${this.inputFilm}` )
+        .then( (res) =>{
+          console.log(res.data.results);
+          this.filteredFilm = res.data.results;
+        }
+      )
     }
   }
 }
