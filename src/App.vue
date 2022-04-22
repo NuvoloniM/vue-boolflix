@@ -6,6 +6,15 @@
       @inputResult="inputResultFunction"
       />
     </header>
+    <main>
+      <div class="row">
+        <FilmCardComp
+        v-for="element in filteredFilm"
+        :key="element.id"
+        :title=element.original_title
+        />
+      </div>
+    </main>
   </div>
 </template>
 
@@ -15,6 +24,7 @@ import "bootstrap";
 import axios from 'axios';
 import LogoComp from "./components/header/LogoComp.vue";
 import InputComp from "./components/header/InputComp.vue";
+import FilmCardComp from "./components/main/FilmCardComp.vue";
 
 export default {
   name: 'App',
@@ -27,6 +37,7 @@ export default {
   components: {
     LogoComp,
     InputComp,
+    FilmCardComp,
   },
   created() {
   },
@@ -50,5 +61,11 @@ export default {
 
 header {
   background-color: black;
+  height: 86px;
+}
+main {
+  height: calc( 100vh - 86px);
+  background-color: rgb(200, 187, 187);
+  overflow-y: auto;
 }
 </style>
