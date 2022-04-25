@@ -16,6 +16,7 @@
         :title=element.original_title
         :overview="element.overview"
         :image="element.poster_path"
+        :flag="element.original_language"
         />
       </div>
       <div class="row">
@@ -26,6 +27,7 @@
         :name="element.name"
         :overview="element.overview"
         :image="element.poster_path"
+        :flag="element.original_language"
         />
       </div>
     </main>
