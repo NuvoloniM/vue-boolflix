@@ -6,6 +6,7 @@
         id="filterInput" 
         placeholder="Scrivi per filtrare"
         v-model="inputFilm"
+        @keydown.enter.prevent="$emit ( 'inputResult', inputFilm)"
         >
         <button 
         type="submit" 

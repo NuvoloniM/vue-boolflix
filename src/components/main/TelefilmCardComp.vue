@@ -27,21 +27,18 @@ export default {
     },
     methods: {
         chooseFlag(lang) {
-            switch (lang) {
-                case 'en':
-                    console.log('inglese')
-                    return this.language= require("../../assets/img/5a376b7ab7a2c2.4464593815135814347522.png")
-                case 'fra':
-                    console.log('francese')
-                    return this.language= require("../../assets/img/kisspng-flag-of-france-flag-of-the-united-kingdom-french-5af2dbc55b5244.0446619815258654133741.png")
-            
-                case 'ita':
-                    console.log('italiano')
-                    return this.language= require("../../assets/img/kisspng-flag-of-italy-flag-of-the-united-states-national-f-italy-flag-5abf21d71305e4.6793026015224754790779.png")
-            
-                default:
-                    console.log('nessuna bandiera')
-                    return this.language= require ("../../assets/img/pngegg.png");
+            if (lang == 'en') {
+                console.log('inglese')
+                return this.language= require("../../assets/img/icons8-gran-bretagna-48.png");
+            } else if (lang == 'fr') {
+                console.log('francese')
+                return this.language= require("../../assets/img/icons8-francia-48.png"); 
+            } else if( lang == "it"){
+                console.log('italiano')
+                return this.language= require("../../assets/img/icons8-italia-48.png");
+            } else {
+                console.log('nessuna bandiera')
+                return this.language= require ("../../assets/img/pngegg.png");
             }
         }
     }
