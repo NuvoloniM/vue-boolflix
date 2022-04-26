@@ -1,7 +1,9 @@
 <template>
-    <div class="card col-2 my-2 p-0">
-        <img :src="`${imgSize}${image}`" class="img-fluid" alt="...">
-        <div class="card-body">
+    <div class="card_test col-2 my-2 p-0 flip-card">
+        <div class="flip-card-front">
+            <img :src="`${imgSize}${image}`" class="img-fluid" alt="...">
+        </div>
+        <div class="card-body flip-card-back ">
             <h5 class="card-title"> {{title}} </h5>
             <h6 class="card-title"> {{originalTitle}} </h6>
             <img :src="language" class="test" alt="">
@@ -76,10 +78,52 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .card{
+    .card_test{
         border-color: rgb(200, 187, 187);
         background-color: rgb(200, 187, 187);
-    }
+    // .flip-card {
+    //     background-color: transparent;
+    //     height: 300px;
+    //     width: 300px;
+    //     perspective: 1000px;
+
+    //     .flip-card-inner {
+    //         position: relative;
+    //         width: 100%;
+    //         height: 100%;
+    //         text-align: center;
+    //         transition: transform 0.6s;
+    //         transform-style: preserve-3d;
+    //         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    //     }
+
+    // }
+    // .flip-card:hover .flip-card-inner {
+    //     transform: rotateY(180deg);
+    // }
+
+    // .flip-card-front, .flip-card-back {
+    //     position: absolute;
+    //     width: 100%;
+    //     height: 100%;
+    //     backface-visibility: hidden;
+    // }
+
+    // .flip-card-front {
+    //     background-color: #bbb;
+    //     color: black;
+    //     img {
+    //         width: 300px;
+    //         height: 300px;
+    //     }
+    // }
+
+    // .flip-card-back {
+    //     background-color: #2980b9;
+    //     color: white;
+    //     transform: rotateY(180deg);
+    // }
+}
     .test{
         width: 50px;
         height: 50px;
