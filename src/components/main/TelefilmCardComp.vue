@@ -1,12 +1,13 @@
 <template>
     <div class="card col-2 my-2 p-0">
         <img :src="`${imgSize}${image}`" class="img-fluid" alt="...">
-        <!-- <div class="card-body">
-            <h5 class="card-title"> {{title}} </h5>
+        <div class="card-body">
+            <h5 class="card-title"> {{name}} </h5>
+            <h6 class="card-title"> {{originalName}} </h6>
+            <img :src="language" class="test" alt="">
             <p class="card-text"> {{overview}} </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div> -->
-        <img :src="language" class="test" alt="">
+            <p class="card-text"> {{vote}} </p>
+        </div>
     </div>
 </template>
 
@@ -21,9 +22,11 @@ export default {
     },
     props: {
         name: String,
+        originalName: String,
         overview: String,
         image: String,
         flag: String,
+        vote: Number,
     },
     methods: {
         chooseFlag(lang) {

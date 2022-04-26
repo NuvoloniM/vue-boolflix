@@ -1,12 +1,24 @@
 <template>
     <div class="card col-2 my-2 p-0">
         <img :src="`${imgSize}${image}`" class="img-fluid" alt="...">
-        <!-- <div class="card-body">
+        <div class="card-body">
             <h5 class="card-title"> {{title}} </h5>
+            <h6 class="card-title"> {{originalTitle}} </h6>
+            <img :src="language" class="test" alt="">
             <p class="card-text"> {{overview}} </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div> -->
-        <img :src="language" class="test" alt="">
+            <p class="card-text">
+                <ul class="d-flex align-items-center justify-content-between">
+                    <li 
+                    v-for="(element,index) in starArray" 
+                    :key="index"
+                    >
+                    <img v-if="element == 'y'" src="../../assets/img/icons8-stella-riempita-16.png" alt="">
+                    <img v-else src="../../assets/img/icons8-stella-50.png" alt="">
+                    </li>
+                </ul>
+            </p>
+            <p class="card-text">  {{vote}} </p>
+        </div>
     </div>
 </template>
 
@@ -17,13 +29,19 @@ export default {
         return {
             imgSize: 'https://image.tmdb.org/t/p/w500',
             language: this.chooseFlag(this.flag),
+            starArray: [],
         }
     },
     props: {
         title: String,
+        originalTitle: String,
         overview: String,
         image: String,
         flag: String,
+        vote: Number,
+    },
+    created() {
+        this.voteStar();
     },
     methods: {
         chooseFlag(flag) {
@@ -40,6 +58,18 @@ export default {
                 console.log('nessuna bandiera')
                 return this.language= require ("../../assets/img/pngegg.png");
             }
+        },
+        voteStar() {
+            for (let i = 1; i <= 5; i++) {
+                let media = Math.floor((this.vote / 2))
+                if (media >= i){
+                    this.starArray.push('y');
+                    console.log(this.starArray);           
+                } else {
+                    this.starArray.push('n');
+                    console.log(this.starArray);   
+                }
+            }
         }
     }
 }
@@ -53,5 +83,15 @@ export default {
     .test{
         width: 50px;
         height: 50px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
     }
 </style>

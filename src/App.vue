@@ -13,10 +13,12 @@
         :personalKey="personalKey"
         v-for="element in filteredFilm"
         :key="element.id"
-        :title=element.original_title
+        :originalTitle="element.original_title"
+        :title="element.title"
         :overview="element.overview"
         :image="element.poster_path"
         :flag="element.original_language"
+        :vote="element.vote_average"
         />
       </div>
       <div class="row px-2 mx-0">
@@ -25,9 +27,11 @@
         v-for="element in filteredTelefilm"
         :key="element.id"
         :name="element.name"
+        :originalName="element.name"
         :overview="element.overview"
         :image="element.poster_path"
         :flag="element.original_language"
+        :vote="element.vote_average"
         />
       </div>
     </main>
