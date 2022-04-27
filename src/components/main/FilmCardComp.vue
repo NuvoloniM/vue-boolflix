@@ -1,5 +1,4 @@
 <template>
-
     <div class="flip-card col-2 my-2 p-2">
         <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -60,6 +59,7 @@ export default {
     },
     created() {
         this.detailsMovie()
+        
     },
     methods: {
         chooseFlag(flag) {

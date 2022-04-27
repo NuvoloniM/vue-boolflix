@@ -4,7 +4,7 @@
         type="text" 
         class="form-control" 
         id="filterInput" 
-        placeholder="Scrivi per filtrare"
+        placeholder="Cerca"
         v-model="inputFilm"
         @keydown.enter.prevent="$emit ( 'inputResult', inputFilm)"
         >

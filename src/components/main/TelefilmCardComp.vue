@@ -14,7 +14,7 @@
                     </ul>
                     <ul class="d-flex flex-wrap align-items-center justify-content-start mb-1">
                         <li>Genres: </li>
-                        <li v-for="element in genres" :key="element.id" class="cast_text"> - {{element.name}}  </li>
+                        <li v-for="(element,index) in genres" :key="index" class="cast_text"> - {{element.name}}  </li>
                     </ul>
                 </p>
                 <p class="card-text mb-1">

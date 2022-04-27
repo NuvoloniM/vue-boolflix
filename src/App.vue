@@ -2,6 +2,9 @@
   <div>
     <header class="d-flex justify-content-between align-items-center p-2">
       <LogoComp/>
+      <SelectComp
+      :personalKey="personalKey"
+      />
       <InputComp
       @inputResult="inputResultFunction"
       />
@@ -46,6 +49,7 @@
 import "bootstrap";
 import axios from 'axios';
 import LogoComp from "./components/header/LogoComp.vue";
+import SelectComp from "./components/header/SelectComp.vue";
 import InputComp from "./components/header/InputComp.vue";
 import FilmCardComp from "./components/main/FilmCardComp.vue";
 import TelefilmCardComp from "./components/main/TelefilmCardComp.vue";
@@ -62,6 +66,7 @@ export default {
   components: {
     LogoComp,
     InputComp,
+    SelectComp,
     FilmCardComp,
     TelefilmCardComp,
   },
