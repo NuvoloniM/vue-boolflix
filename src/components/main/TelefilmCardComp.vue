@@ -9,7 +9,12 @@
                 <h6 class="card-title"> {{originalName}} </h6>
                 <p class="card-text mb-1">
                     <ul class="d-flex flex-wrap align-items-center justify-content-start mb-1">
-                        <li v-for="element in cast" :key="element.cast_id" class="cast_text"><span v-if="element.name != 'undefined'"> - {{element.name}} </span> </li>
+                        <li>Cast: </li>
+                        <li v-for="element in cast" :key="element.cast_id" class="cast_text"><span> - {{element.name}} </span> </li>
+                    </ul>
+                    <ul class="d-flex flex-wrap align-items-center justify-content-start mb-1">
+                        <li>Genres: </li>
+                        <li v-for="element in genres" :key="element.id" class="cast_text"> - {{element.name}}  </li>
                     </ul>
                 </p>
                 <p class="card-text mb-1">
@@ -40,6 +45,7 @@ export default {
             imgSize: 'https://image.tmdb.org/t/p/w342',
             language: this.chooseFlag(this.flag),
             cast: [],
+            genres: [],
         }
     },
     props: {
@@ -80,6 +86,14 @@ export default {
                     for (let i = 0; i < 5; i++) {
                         this.cast.push(res.data.cast[i])
                         console.log(this.cast)
+                    }
+                }
+            )
+            axios.get( `https://api.themoviedb.org/3/movie/${this.idTelefilm}?api_key=${this.personalKey}` )
+                .then( (res) =>{
+                    for (let i = 0; i < res.data.genres.length; i++) {
+                        this.genres.push(res.data.genres[i])
+                        console.log(this.genres)
                     }
                 }
             )
