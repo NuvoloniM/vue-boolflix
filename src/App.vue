@@ -4,6 +4,7 @@
       <LogoComp/>
       <SelectComp
       :personalKey="personalKey"
+      @selectResult="selectResultFunction"
       />
       <InputComp
       @inputResult="inputResultFunction"
@@ -14,7 +15,7 @@
         <h2 v-if="this.filteredFilm.length > 0" class="ps-3 py-2">Film</h2>
         <FilmCardComp
         :personalKey="personalKey"
-        v-for="element in filteredFilm"
+        v-for="element in filterMovie()"
         :key="element.id"
         :originalTitle="element.original_title"
         :title="element.title"
@@ -61,6 +62,7 @@ export default {
       personalKey: 'ac7ccea2c466d848c3c9dc330aad7c80',
       filteredFilm: [],
       filteredTelefilm:[],
+      selectedGenres: '',
     }
   },
   components: {
@@ -87,7 +89,21 @@ export default {
           this.filteredTelefilm = res.data.results;
         }
       )
-    }
+    },
+    selectResultFunction( testo ) {
+      console.log(testo);
+      this.selectedGenres = testo;
+      console.log(this.selectedValue);
+    },
+    filterMovie(){
+            if( this.selectedGenres == ""){
+                return this.filteredFilm;    
+            } else {
+                return this.filteredFilm.filter( (elem) => {
+                    return elem.genre_ids.includes(this.selectedGenres);
+                } )
+            }
+        }
   }
 }
 </script>

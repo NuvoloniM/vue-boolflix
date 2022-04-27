@@ -1,8 +1,13 @@
 <template>
 <div>
-    <select class="form-select" aria-label="Default select example">
+    <select 
+    class="form-select" 
+    aria-label="Default select example" 
+    v-model="selectedGenres"
+    @click.prevent="$emit ( 'selectResult', selectedGenres)"
+    >
         <option selected>Open this select a genres</option>
-        <option v-for="element in allGenres" :key="element.id" :value="element.name"> {{element.name}} </option>
+        <option v-for="element in allGenres" :key="element.id" :value="element.id"> {{element.name}} </option>
         <!-- <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option> -->
@@ -19,6 +24,7 @@ export default {
     data(){
         return{
             allGenres: [],
+            selectedGenres: '',
         }
     },
     props: {
