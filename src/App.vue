@@ -2,10 +2,6 @@
   <div>
     <header class="d-flex justify-content-between align-items-center p-2">
       <LogoComp/>
-      <SelectComp
-      :personalKey="personalKey"
-      @selectResult="selectResultFunction"
-      />
       <InputComp
       @inputResult="inputResultFunction"
       />
@@ -13,6 +9,11 @@
     <main>
       <div class="row px-2 mx-0">
         <h2 v-if="this.filteredFilm.length > 0" class="ps-3 py-2">Film</h2>
+        <SelectFilmComp
+        v-if="this.filteredFilm.length > 0"
+        :personalKey="personalKey"
+        @selectFilmResult="selectFilmResultFunction"
+        />
         <FilmCardComp
         :personalKey="personalKey"
         v-for="element in filterMovie()"
@@ -28,9 +29,14 @@
       </div>
       <div class="row px-2 mx-0">
         <h2 v-if="this.filteredTelefilm.length > 0" class="ps-3 py-2">Telefilm</h2>
+        <SelectTelefilmComp
+        v-if="this.filteredFilm.length > 0"
+        :personalKey="personalKey"
+        @selectTvResult="selectTvResultFunction"
+        />
         <TelefilmCardComp
         :personalKey="personalKey"
-        v-for="element in filteredTelefilm"
+        v-for="element in filterTelefilm()"
         :key="element.id"
         :name="element.name"
         :originalName="element.name"
@@ -50,7 +56,8 @@
 import "bootstrap";
 import axios from 'axios';
 import LogoComp from "./components/header/LogoComp.vue";
-import SelectComp from "./components/header/SelectComp.vue";
+import SelectFilmComp from "./components/main/SelectFilmComp.vue";
+import SelectTelefilmComp from "./components/main/SelectTelefilmComp.vue";
 import InputComp from "./components/header/InputComp.vue";
 import FilmCardComp from "./components/main/FilmCardComp.vue";
 import TelefilmCardComp from "./components/main/TelefilmCardComp.vue";
@@ -62,13 +69,15 @@ export default {
       personalKey: 'ac7ccea2c466d848c3c9dc330aad7c80',
       filteredFilm: [],
       filteredTelefilm:[],
-      selectedGenres: '',
+      selectedFilmGenres: '',
+      selectedTvGenres: '',
     }
   },
   components: {
     LogoComp,
     InputComp,
-    SelectComp,
+    SelectFilmComp,
+    SelectTelefilmComp,
     FilmCardComp,
     TelefilmCardComp,
   },
@@ -90,20 +99,32 @@ export default {
         }
       )
     },
-    selectResultFunction( testo ) {
+    selectFilmResultFunction( testo ) {
       console.log(testo);
-      this.selectedGenres = testo;
-      console.log(this.selectedValue);
+      this.selectedFilmGenres = testo;
+    },
+    selectTvResultFunction( testo ) {
+      console.log(testo);
+      this.selectedTvGenres = testo;
     },
     filterMovie(){
-            if( this.selectedGenres == ""){
+            if( this.selectedFilmGenres == ""){
                 return this.filteredFilm;    
             } else {
                 return this.filteredFilm.filter( (elem) => {
-                    return elem.genre_ids.includes(this.selectedGenres);
+                    return elem.genre_ids.includes(this.selectedFilmGenres);
                 } )
             }
-        }
+    },
+    filterTelefilm(){
+            if( this.selectedTvGenres == ""){
+                return this.filteredTelefilm;    
+            } else {
+                return this.filteredTelefilm.filter( (elem) => {
+                    return elem.genre_ids.includes(this.selectedTvGenres);
+                } )
+            }
+    }
   }
 }
 </script>
