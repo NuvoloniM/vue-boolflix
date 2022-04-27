@@ -25,6 +25,7 @@
       <div class="row px-2 mx-0">
         <h2 v-if="this.filteredTelefilm.length > 0" class="ps-3 py-2">Telefilm</h2>
         <TelefilmCardComp
+        :personalKey="personalKey"
         v-for="element in filteredTelefilm"
         :key="element.id"
         :name="element.name"
@@ -33,6 +34,7 @@
         :image="element.poster_path"
         :flag="element.original_language"
         :vote="element.vote_average"
+        :idTelefilm="element.id"
         />
       </div>
     </main>

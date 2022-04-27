@@ -10,7 +10,7 @@
                 <h6 class="card-title"> {{originalTitle}} </h6>
                 <p class="card-text mb-1">
                     <ul class="d-flex flex-wrap align-items-center justify-content-start mb-1">
-                        <li v-for="element in cast" :key="element.cast_id" class="cast_text p-1"> - {{element.name}} - </li>
+                        <li v-for="element in cast" :key="element.cast_id" class="cast_text"> - {{element.name}}  </li>
                     </ul>
                 </p>
                 <p class="card-text mb-1">
@@ -152,9 +152,10 @@ export default {
         }
 
         .cast_text{
-            font-size: 0.8em;
+            font-size: 0.7em;
             color: lightgray;
             font-style: italic;
+            padding: 0;
         }
     }
 
