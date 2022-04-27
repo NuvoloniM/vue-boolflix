@@ -1,5 +1,5 @@
 <template>
-<div class="flip-card col-2 my-2 p-0">
+<div class="flip-card col-2 my-2 p-2">
         <div class="flip-card-inner">
             <div class="flip-card-front">
                 <img :src="`${imgSize}${image}`" alt="Film Poster" class="">
@@ -40,6 +40,7 @@ export default {
         image: String,
         flag: String,
         vote: Number,
+        idMovies: Number,
     },
     created() {
     },

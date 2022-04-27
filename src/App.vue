@@ -19,6 +19,7 @@
         :image="element.poster_path"
         :flag="element.original_language"
         :vote="element.vote_average"
+        :idMovies="element.id"
         />
       </div>
       <div class="row px-2 mx-0">

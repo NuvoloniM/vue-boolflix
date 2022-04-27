@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flip-card col-2 my-2 p-0">
+    <div class="flip-card col-2 my-2 p-2">
         <div class="flip-card-inner">
             <div class="flip-card-front">
                 <img :src="`${imgSize}${image}`" alt="Film Poster" class="">
@@ -9,12 +9,16 @@
                 <h5 class="card-title">{{title}}</h5> 
                 <h6 class="card-title"> {{originalTitle}} </h6>
                 <p class="card-text mb-1">
+                    <ul class="d-flex flex-wrap align-items-center justify-content-start mb-1">
+                        <li v-for="element in cast" :key="element.cast_id" class="cast_text p-1"> - {{element.name}} - </li>
+                    </ul>
+                </p>
+                <p class="card-text mb-1">
                     <ul class="d-flex align-items-center justify-content-center mb-1">
                         <li class="pe-2"> {{ vote/2 }} </li>
                         <li v-for="i in 5" :key="i">
                             <font-awesome-icon v-if="i <= voteStar()" icon="fa-solid fa-star" class="text-y" /> 
                             <font-awesome-icon v-else icon="fa-regular fa-star" /> 
-                            
                         </li>
                     </ul>
                 </p>
@@ -26,12 +30,16 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
     name: 'FilmCardComp',
     data(){
         return {
             imgSize: 'https://image.tmdb.org/t/p/w342',
             language: this.chooseFlag(this.flag),
+            cast: [],
         }
     },
     props: {
@@ -41,8 +49,11 @@ export default {
         image: String,
         flag: String,
         vote: Number,
+        idMovies: Number,
+        personalKey: String,
     },
     created() {
+        this.detailsMovie()
     },
     methods: {
         chooseFlag(flag) {
@@ -62,7 +73,17 @@ export default {
         },
         voteStar() {
             return Math.floor((this.vote / 2))
-        }
+        },
+        detailsMovie() {
+            axios.get( `https://api.themoviedb.org/3/movie/${this.idMovies}/credits?api_key=${this.personalKey}` )
+                .then( (res) =>{
+                    for (let i = 0; i < 5; i++) {
+                        this.cast.push(res.data.cast[i])
+                        console.log(this.cast)
+                    }
+                }
+            )
+        },
     }
 }
 </script>
@@ -129,5 +150,12 @@ export default {
             width: 30px;
             height: 30px;
         }
+
+        .cast_text{
+            font-size: 0.8em;
+            color: lightgray;
+            font-style: italic;
+        }
     }
+
 </style>
