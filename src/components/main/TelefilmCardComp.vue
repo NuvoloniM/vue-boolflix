@@ -8,11 +8,11 @@
                 <h5 class="card-title">{{name}}</h5> 
                 <h6 class="card-title"> {{originalName}} </h6>
                 <p class="card-text mb-1">
-                    <ul class="d-flex flex-wrap align-items-center justify-content-start mb-1">
+                    <ul v-if="cast.length > 0"  class="d-flex flex-wrap align-items-center justify-content-start mb-1">
                         <li>Cast: </li>
                         <li v-for="element in cast" :key="element.cast_id" class="cast_text"><span> - {{element.name}} </span> </li>
                     </ul>
-                    <ul class="d-flex flex-wrap align-items-center justify-content-start mb-1">
+                    <ul v-if="genres.length > 0" class="d-flex flex-wrap align-items-center justify-content-start mb-1">
                         <li>Genres: </li>
                         <li v-for="(element,index) in genres" :key="index" class="cast_text"> - {{element.name}}  </li>
                     </ul>
